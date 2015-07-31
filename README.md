@@ -20,6 +20,7 @@
 * start debian in command-line mode (select the bootmenu option)
 * login as root and navigate to the download directory
 * chmod +x the downloaded file and execute it
+* (after kernel-updates you have to do "apt-get install linux-headers-$(uname -r)")
 
 ## Fix the tearing problem
 * modify /etc/X11/xorg.conf
