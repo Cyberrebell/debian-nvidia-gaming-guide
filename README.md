@@ -57,7 +57,7 @@ Option "Coolbits" "4"
 Solution: Reinstall the graphic driver. It must be rebuilt after x11 updates.
 
 ### There is an error on installing the graphic driver related to linux-headers
-You have to add the latest linux-headers to build the graphic driver successful
+Solution: You have to add the latest linux-headers to build the graphic driver successful
 ```
 apt-get install linux-headers-$(uname -r)
 ```
