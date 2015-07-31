@@ -20,7 +20,6 @@
 * start debian in command-line mode (select the bootmenu option)
 * login as root and navigate to the download directory
 * chmod +x the downloaded file and execute it
-* (after kernel-updates you have to do "apt-get install linux-headers-$(uname -r)")
 
 ## Fix the tearing problem
 * modify /etc/X11/xorg.conf
@@ -51,3 +50,14 @@ Option "Coolbits" "4"
 ```
 * I created "gpu_fan_target.sh" to do this. You can download it from this repository and add it to your autostart scripts.
 * You can edit the "target_temperature" in the script if you like
+
+## Common Problems
+
+### Debian ist starting in Command Line mode. There is no GUI anymore.
+Solution: Reinstall the graphic driver. It must be rebuilt after x11 updates.
+
+### There is an error on installing the graphic driver related to linux-headers
+You have to add the latest linux-headers to build the graphic driver successful
+```
+apt-get install linux-headers-$(uname -r)
+```
