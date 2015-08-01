@@ -13,7 +13,9 @@
 * Debian is the root of some other linux distros like Ubuntu and SteamOS.
 
 ## Installing some basicly required packages
-* ToDo
+* g++
+* make
+* linux-headers-$(uname -r)
 
 ## Installing the Nvidia manufacturer driver
 * download your matching version from nvidia.de
@@ -21,22 +23,18 @@
 * login as root and navigate to the download directory
 * chmod +x the downloaded file and execute it
 
+## Install Steam
+* "sudo nano /etc/apt/sources.list", go to the first line starting with "deb" and add "non-free" after "main"
+* "sudo dpkg --add-architecture i386"
+* "sudo apt-get update"
+* "sudo apt-get install steam"
+
 ## Fix the tearing problem
 * modify /etc/X11/xorg.conf
-* search the Screen-Section
-* add the two Option-Lines from the following sample
+* add the two Option-Lines into the "Screen" section
 ```
-Section "Screen"
-    Identifier     "Screen0"
-    Device         "Device0"
-    Monitor        "Monitor0"
-    DefaultDepth    24
     Option         "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
     Option         "TripleBuffer" "on"
-    SubSection     "Display"
-        Depth       24
-    EndSubSection
-EndSection
 ```
 * reboot
 
@@ -60,4 +58,11 @@ Solution: Reinstall the graphic driver. It must be rebuilt after x11 updates.
 Solution: You have to add the latest linux-headers to build the graphic driver successful
 ```
 apt-get install linux-headers-$(uname -r)
+```
+
+### My OS GUI freezes after I exit games
+* This error is caused by bad Nvidia-Drivers
+* You can avoid it by adding the following line to the "device" section in your /etc/X11/xorg.conf
+```
+    Option         "RegistryDwords" "PowerMizerEnable=0x1; PowerMizerDefaultAC=0x1"
 ```
