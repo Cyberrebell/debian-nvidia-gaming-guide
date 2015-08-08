@@ -22,13 +22,13 @@ do
 		
 	if [ $current_temperature -gt `expr $target_temperature + $target_temperature_range` ]; then
 		current_fanspeed=`expr $current_fanspeed + $adjustment_rate`
-		nvidia-settings -a [gpu:0]/GPUFanControlState=1 -a [fan:0]/GPUCurrentFanSpeed=$current_fanspeed
+		nvidia-settings -a [gpu:0]/GPUFanControlState=1 -a [fan:0]/GPUTargetFanSpeed=$current_fanspeed
 		current_interval=$adjustment_rate
 	else
 		if [ $current_temperature -lt `expr $target_temperature - $target_temperature_range` ]; then
 			if [ $current_fanspeed -gt `expr $min_fanspeed` ]; then
 				current_fanspeed=`expr $current_fanspeed - $adjustment_rate`
-				nvidia-settings -a [gpu:0]/GPUFanControlState=1 -a [fan:0]/GPUCurrentFanSpeed=$current_fanspeed
+				nvidia-settings -a [gpu:0]/GPUFanControlState=1 -a [fan:0]/GPUTargetFanSpeed=$current_fanspeed
 				current_interval=$adjustment_rate
 			fi
 		fi
