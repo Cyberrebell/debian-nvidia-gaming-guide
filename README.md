@@ -46,7 +46,13 @@
 ```
 Option "Coolbits" "4"
 ```
-* I created "gpu_fan_target.sh" to do this. You can download it from this repository and add it to your autostart scripts.
+* I created "gpu_fan_target.sh" to do this. You can download it from this repository and add it as an systemd service
+* to add the systemd service copy "gpu-fan-control.service" from this repo to /etc/systemd/system/
+* edit the path in "gpu-fan-control.service" to the script
+```
+sudo systemctl enable gpu-fan-control
+sudo systemctl start gpu-fan-control
+```
 * You can edit the "target_temperature" in the script if you like
 
 ## Common Problems

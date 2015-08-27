@@ -1,0 +1,13 @@
+[Unit]
+Description=GPU fan control
+After=syslog.target
+
+[Service]
+ExecStart=/REPLACE_PATH_TO_YOUR_SCRIPT/gpu_fan_target.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
