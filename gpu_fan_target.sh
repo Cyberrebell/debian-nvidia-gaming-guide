@@ -14,6 +14,14 @@ adjustment_rate=2
 
 min_fanspeed=20
 
+sleep 20
+
+# overclocking clock
+#nvidia-settings -c :0 -a '[gpu:0]/GPUGraphicsClockOffset[3]=140'
+
+# overclocking memory
+#nvidia-settings -c :0 -a '[gpu:0]/GPUMemoryTransferRateOffset[3]=400'
+
 while true
 do
 	current_temperature=`nvidia-settings -t -c :0 -q [GPU:0]/GPUCoreTemp`
