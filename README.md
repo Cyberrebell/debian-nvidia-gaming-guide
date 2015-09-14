@@ -65,10 +65,3 @@ Solution: You have to add the latest linux-headers to build the graphic driver s
 ```
 apt-get install linux-headers-$(uname -r)
 ```
-
-### My OS GUI freezes after I exit games
-* This error is caused by bad Nvidia-Drivers
-* You can avoid it by adding the following line to the "device" section in your /etc/X11/xorg.conf
-```
-    Option         "RegistryDwords" "PowerMizerEnable=0x1; PowerMizerDefaultAC=0x1"
-```
